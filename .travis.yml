@@ -15,3 +15,6 @@ matrix:
       env: TEST=advanced
 
 script: ./run_tests.sh
+
+notifications:
+  email: false
