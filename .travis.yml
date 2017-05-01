@@ -6,7 +6,6 @@ install:
   - npm install -g elm@0.18.0 elm-test
   - elm-package install --yes
 
-
 matrix:
   include:
     - os: linux
