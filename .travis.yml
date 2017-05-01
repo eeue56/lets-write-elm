@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - latest
+
+install:
+  - npm install -g elm@0.18.0 elm-test
+  - elm-package install --yes
+
+
+matrix:
+  include:
+    - os: linux
+      env: TEST=simple
+
+    - os: linux
+      env: TEST=advanced
+
+script: ./run_tests.sh
