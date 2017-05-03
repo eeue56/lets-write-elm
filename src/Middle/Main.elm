@@ -42,6 +42,11 @@ saveUserView =
     Html.text "Implement me!"
 
 
+peopleView : List String -> Html.Html Msg
+peopleView people =
+    Html.text "Implement me"
+
+
 view : Model -> Html.Html Msg
 view model =
     Html.div
@@ -49,6 +54,7 @@ view model =
         [ changeNameView model.name
         , welcomeView model.name
         , saveUserView
+        , peopleView model.people
         ]
 
 

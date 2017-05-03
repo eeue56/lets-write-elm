@@ -10,20 +10,20 @@ makeWelcomeMessage name =
     name ++ "!"
 
 
-sayHiToEveryone : List String -> List String
-sayHiToEveryone people =
-    List.map makeWelcomeMessage people
-
-
 
 -- VIEWS
 
 
+{-| I should say "hello world"
+-}
 helloWorldView : Html.Html msg
 helloWorldView =
     Html.text ""
 
 
+{-| There should be four items in this list
+
+-}
 listOfFourView : Html.Html msg
 listOfFourView =
     Html.ul

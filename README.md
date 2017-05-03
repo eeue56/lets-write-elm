@@ -1,5 +1,15 @@
 # lets-write-elm
 
+
+---
+
+## Goals
+
+- Understand Elm's syntax
+- Take a look at examples views
+- Learn how elm-test works
+
+---
 ## Go install Elm 
 
 If you haven't installed Elm previously, you should install Elm now. The easiest way to install Elm is via `npm`. We're also going to be using elm-test in order to run our tests.
@@ -8,21 +18,23 @@ If you haven't installed Elm previously, you should install Elm now. The easiest
 npm install -g elm elm-test elm-format
 ```
 
-If you don't have npm
+If you don't have npm, I suggest you get it.
 
 
-## Minimal Elm program
+---
 
-The smallest Elm program is just a plain old HTML text string.
+## Clone this repo
 
-```elm
--- import the Html module
-import Html 
+https://github.com/eeue56/lets-write-elm
 
--- 
-main = Html.text "Hello world!"
 ```
+git clone git@github.com:eeue56/lets-write-elm.git
+```
+
+---
 
 ## Now what?
 
 Run elm-test and get fixing things!
+
+---
