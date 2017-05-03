@@ -1,0 +1,39 @@
+module MiddleTests exposing (..)
+
+import Test exposing (..)
+import Fuzz
+import Test.Html.Query as Query
+import Test.Html.Selector as Selector
+import Test.Html.Events as Events
+import Expect
+import Middle.Main exposing (Msg(..))
+
+
+defaultModel : Middle.Main.Model
+defaultModel =
+    { name = "", people = [] }
+
+
+all : Test
+all =
+    describe "Middle test suite"
+        [ Test.fuzz Fuzz.string
+            "Changing a name will actually change a name"
+            (\name ->
+                Middle.Main.update (ChangeName name) defaultModel
+                    |> Expect.equal { name = name, people = [] }
+            )
+        , Test.fuzz Fuzz.string
+            "Saving a name will actually change a name"
+            (\name ->
+                Middle.Main.update (SavePerson) { defaultModel | name = name }
+                    |> Expect.equal { name = "", people = [ name ] }
+            )
+        , Test.test
+            "Clicking save will actually save the item"
+            (\_ ->
+                Query.fromHtml (Middle.Main.view defaultModel)
+                    |> Events.simulate Events.Click
+                    |> Events.expectEvent SavePerson
+            )
+        ]
