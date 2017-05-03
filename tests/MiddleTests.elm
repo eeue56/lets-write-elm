@@ -24,6 +24,13 @@ all =
                     |> Expect.equal { name = name, people = [] }
             )
         , Test.fuzz Fuzz.string
+            "Typing input will actually trigger an event"
+            (\name ->
+                Query.fromHtml (Middle.Main.changeNameView "")
+                    |> Events.simulate (Events.Input "hello")
+                    |> Events.expectEvent (ChangeName "hello")
+            )
+        , Test.fuzz Fuzz.string
             "Saving a name will actually change a name"
             (\name ->
                 Middle.Main.update (SavePerson) { defaultModel | name = name }
