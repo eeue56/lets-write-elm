@@ -27,8 +27,9 @@ type Msg
 update : Msg -> Model -> Model
 update msg model =
     case msg of
+        -- IMPLEMENT ME!
         ChangeName newName ->
-            { model | name = newName }
+            model
 
         -- IMPLEMENT ME!
         SavePerson ->
