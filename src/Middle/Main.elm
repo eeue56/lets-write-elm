@@ -6,10 +6,17 @@ import Html.Events
 import Start.Main exposing (welcomeView)
 
 
+-- MODEL
+
+
 type alias Model =
     { name : String
     , people : List String
     }
+
+
+
+-- UPDATE
 
 
 type Msg
@@ -26,6 +33,10 @@ update msg model =
         -- IMPLEMENT ME!
         SavePerson ->
             model
+
+
+
+-- VIEWS
 
 
 changeNameView : String -> Html.Html Msg
@@ -56,6 +67,10 @@ view model =
         , saveUserView
         , peopleView model.people
         ]
+
+
+
+-- Main
 
 
 main : Program Never Model Msg

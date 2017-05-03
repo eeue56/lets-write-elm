@@ -11,7 +11,7 @@ import Start.Main
 all : Test
 all =
     describe "My HelloWorld test suite"
-        [ Test.test "The view function says hello world!"
+        [ Test.test "The view function says Hello world!"
             (\() ->
                 Query.fromHtml Start.Main.helloWorldView
                     |> Query.has [ Selector.text "Hello world!" ]
@@ -32,5 +32,10 @@ all =
             (\name ->
                 Query.fromHtml (Start.Main.welcomeView name)
                     |> Query.has [ Selector.text ("Welcome " ++ name ++ "!") ]
+            )
+        , Test.test "The view is welcoming to long names"
+            (\() ->
+                Query.fromHtml (Start.Main.welcomeView "Rhydian")
+                    |> Query.has [ Selector.text "Welcome Rhydian! That's a long name" ]
             )
         ]

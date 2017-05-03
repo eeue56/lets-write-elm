@@ -8,6 +8,7 @@
 - Understand Elm's syntax
 - Take a look at examples views
 - Learn how elm-test works
+- Fix some broken code
 
 ---
 ## Go install Elm 

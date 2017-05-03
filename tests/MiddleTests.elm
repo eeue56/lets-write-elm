@@ -36,4 +36,16 @@ all =
                     |> Events.simulate Events.Click
                     |> Events.expectEvent SavePerson
             )
+        , Test.test
+            "People view says add a user when no users"
+            (\_ ->
+                Query.fromHtml (Middle.Main.peopleView defaultModel.people)
+                    |> Query.has [ Selector.text "Add a user!" ]
+            )
+        , Test.test
+            "People view has the people's name in when there are people"
+            (\_ ->
+                Query.fromHtml (Middle.Main.peopleView [ "Noah" ])
+                    |> Query.has [ Selector.text "Noah" ]
+            )
         ]
