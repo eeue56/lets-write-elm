@@ -39,7 +39,7 @@ all =
         , Test.test
             "Clicking save will actually save the item"
             (\_ ->
-                Query.fromHtml (Middle.Main.view defaultModel)
+                Query.fromHtml (Middle.Main.saveUserView)
                     |> Events.simulate Events.Click
                     |> Events.expectEvent SavePerson
             )

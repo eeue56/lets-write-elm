@@ -10,8 +10,13 @@ import Start.Main exposing (welcomeView)
 
 
 type alias Model =
-    { name : String
-    , people : List String
+    { name : String, people : List String }
+
+
+defaultModel : Model
+defaultModel =
+    { name = "noah"
+    , people = [ "Fred", "Fido" ]
     }
 
 
@@ -29,11 +34,11 @@ update msg model =
     case msg of
         -- IMPLEMENT ME!
         ChangeName newName ->
-            model
+            { model | name = newName }
 
         -- IMPLEMENT ME!
         SavePerson ->
-            model
+            { model | name = "", people = model.name :: model.people }
 
 
 
@@ -41,22 +46,29 @@ update msg model =
 
 
 changeNameView : String -> Html.Html Msg
-changeNameView model =
+changeNameView name =
     Html.input
         [ Html.Events.onInput ChangeName
-        , Html.Attributes.defaultValue model
+        , Html.Attributes.value name
         ]
         []
 
 
 saveUserView : Html.Html Msg
 saveUserView =
-    Html.text "Implement me!"
+    Html.button
+        [ Html.Events.onClick (ChangeName "hello")
+        ]
+        [ Html.text "Save person!" ]
 
 
 peopleView : List String -> Html.Html Msg
 peopleView people =
-    Html.text "Implement me"
+    if List.length people == 0 then
+        Html.text "Add a user!"
+    else
+        List.map (\person -> Html.li [] [ Html.text person ]) people
+            |> Html.ul []
 
 
 view : Model -> Html.Html Msg

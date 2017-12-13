@@ -38,4 +38,14 @@ all =
                 Query.fromHtml (Start.Main.welcomeView "Rhydian")
                     |> Query.has [ Selector.text "Welcome Rhydian! That's a long name" ]
             )
+        , Test.fuzz Fuzz.string
+            "The view is welcoming to long names"
+            (\name ->
+                if String.length name > 6 then
+                    Query.fromHtml (Start.Main.welcomeView name)
+                        |> Query.has [ Selector.text ("Welcome " ++ name ++ "! That's a long name") ]
+                else
+                    Query.fromHtml (Start.Main.welcomeView name)
+                        |> Query.has [ Selector.text ("Welcome " ++ name ++ "!") ]
+            )
         ]
